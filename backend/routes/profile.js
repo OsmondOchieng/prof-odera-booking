@@ -24,7 +24,7 @@ router.get('/professor', async (req, res) => {
         'Stress Management'
       ],
       email: 'podera@mmust.ac.ke',
-      phone: '+254-XXX-XXXXXX',
+      phone: '+254729320217',
       image: '/images/prof-odera.jpg',
       qualifications: [
         'PhD in Psychology (1994) - Aligarh Muslim University',

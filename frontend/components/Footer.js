@@ -25,7 +25,7 @@ const Footer = () => {
           <h3 className="font-bold mb-6 text-lg text-white">Contact</h3>
           <div className="space-y-4">
             <p className="flex items-center text-slate-300 hover:text-secondary transition-colors"><span className="mr-3 text-lg">📧</span>podera@mmust.ac.ke</p>
-            <p className="flex items-center text-slate-300 hover:text-secondary transition-colors"><span className="mr-3 text-lg">📞</span>+254-XXX-XXXXXX</p>
+            <p className="flex items-center text-slate-300 hover:text-secondary transition-colors"><span className="mr-3 text-lg">📞</span>+254729320217</p>
             <p className="flex items-center text-slate-300 hover:text-secondary transition-colors"><span className="mr-3 text-lg">📍</span>Kakamega, Kenya</p>
           </div>
         </div>
