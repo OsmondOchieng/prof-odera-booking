@@ -136,6 +136,11 @@ export default function Home() {
                 <h2 className="mt-5 text-3xl font-bold text-slate-900">Compassionate and evidence-based</h2>
                 <p className="mt-4 text-slate-600 font-light leading-relaxed">Every session is designed to deliver professional support that is clear, warm, and actionable.</p>
               </div>
+              <div className="card border-2 border-slate-100 p-8 bg-white/80 backdrop-blur-sm text-center">
+                <div className="w-32 h-32 bg-slate-200 rounded-full mx-auto mb-4 flex items-center justify-center text-slate-500">Photo</div>
+                <p className="font-semibold text-slate-900">Prof. Peter Odera</p>
+                <p className="text-sm text-slate-600">Profile photo (coming soon)</p>
+              </div>
             </div>
           </div>
         </div>
@@ -216,6 +221,18 @@ export default function Home() {
           <div className="text-center mb-16 max-w-3xl mx-auto animate-fade-in">
             <p className="text-sm uppercase tracking-widest font-bold text-secondary">💬 Client Feedback</p>
             <h2 className="mt-6 text-5xl lg:text-6xl font-bold text-slate-900">What clients say</h2>
+          </div>
+
+          <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+            <p className="text-center text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
+              Real feedback from individuals and professionals who have worked with Prof. Odera. Read full stories or share your own experience.
+            </p>
+            <button
+              onClick={() => router.push('/testimonials')}
+              className="btn btn-secondary text-base px-6 py-3 mx-auto sm:mx-0"
+            >
+              Read real feedback
+            </button>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">

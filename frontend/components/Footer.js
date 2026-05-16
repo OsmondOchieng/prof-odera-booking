@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-slate-700 mt-12 pt-8 pb-6 relative z-10">
-        <p className="text-center text-slate-400 font-light">&copy; 2024 Prof. Peter Odera. All rights reserved. | Made with ❤️ for mental health</p>
+        <p className="text-center text-slate-400 font-light">&copy; 2026 Prof. Peter Odera. All rights reserved. | Made with ❤️ for mental health</p>
       </div>
     </footer>
   );
