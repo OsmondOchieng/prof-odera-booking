@@ -92,9 +92,18 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr] items-center">
             <div className="animate-fade-in space-y-8">
-              <span className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 px-6 py-3 text-sm font-bold uppercase tracking-widest text-primary border border-primary/20 hover:border-primary/40 transition-colors">
-                ✨ Academic mental health care
-              </span>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6">
+                <span className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 px-6 py-3 text-sm font-bold uppercase tracking-widest text-primary border border-primary/20 hover:border-primary/40 transition-colors">
+                  ✨ Academic mental health care
+                </span>
+                <div className="mt-5 sm:mt-0 flex items-center gap-4 rounded-3xl border border-slate-200 bg-white/80 px-5 py-4 shadow-sm">
+                  <div className="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center text-slate-500">Photo</div>
+                  <div>
+                    <p className="text-sm text-slate-600">Profile photo</p>
+                    <p className="font-semibold text-slate-900">Prof. Peter Odera</p>
+                  </div>
+                </div>
+              </div>
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight text-gradient">
                 Counseling, trauma therapy, career guidance and educational psychology with professional clarity.
               </h1>
@@ -135,11 +144,6 @@ export default function Home() {
                 <p className="text-xs uppercase tracking-widest font-bold text-secondary">❤️ Client-first care</p>
                 <h2 className="mt-5 text-3xl font-bold text-slate-900">Compassionate and evidence-based</h2>
                 <p className="mt-4 text-slate-600 font-light leading-relaxed">Every session is designed to deliver professional support that is clear, warm, and actionable.</p>
-              </div>
-              <div className="card border-2 border-slate-100 p-8 bg-white/80 backdrop-blur-sm text-center">
-                <div className="w-32 h-32 bg-slate-200 rounded-full mx-auto mb-4 flex items-center justify-center text-slate-500">Photo</div>
-                <p className="font-semibold text-slate-900">Prof. Peter Odera</p>
-                <p className="text-sm text-slate-600">Profile photo (coming soon)</p>
               </div>
             </div>
           </div>
