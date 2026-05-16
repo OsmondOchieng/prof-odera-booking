@@ -34,7 +34,7 @@ export default function AcademicProfile() {
               <div className="card border border-slate-200 p-8 bg-slate-50">
                 <h2 className="text-2xl font-semibold text-slate-900">Download Full CV</h2>
                 <p className="mt-4 text-slate-600">Access a complete academic and professional portfolio with research, teaching and counseling credentials.</p>
-                <a href="/CV.txt" download className="mt-8 inline-block btn btn-secondary">
+                <a href="/prof-odera-booking/CV.txt" download className="mt-8 inline-block btn btn-secondary">
                   Download Full CV
                 </a>
               </div>

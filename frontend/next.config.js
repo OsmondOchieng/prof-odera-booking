@@ -2,6 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  basePath: '/prof-odera-booking',
+  assetPrefix: '/prof-odera-booking/',
   images: {
     unoptimized: true,
   },

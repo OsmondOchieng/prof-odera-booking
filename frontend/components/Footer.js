@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -15,10 +16,10 @@ const Footer = () => {
         <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <h3 className="font-bold mb-6 text-lg text-white">Services</h3>
           <ul className="space-y-3">
-            <li><a href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Individual Counseling</a></li>
-            <li><a href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Career Guidance</a></li>
-            <li><a href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Trauma Therapy</a></li>
-            <li><a href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Workshops</a></li>
+            <li><Link href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Individual Counseling</Link></li>
+            <li><Link href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Career Guidance</Link></li>
+            <li><Link href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Trauma Therapy</Link></li>
+            <li><Link href="/services" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Workshops</Link></li>
           </ul>
         </div>
         <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
@@ -32,10 +33,10 @@ const Footer = () => {
         <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <h3 className="font-bold mb-6 text-lg text-white">Quick Links</h3>
           <ul className="space-y-3">
-            <li><a href="/about" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>About</a></li>
-            <li><a href="/testimonials" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Testimonials</a></li>
-            <li><a href="/academic-profile" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Academic Profile</a></li>
-            <li><a href="/privacy" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Privacy Policy</a></li>
+            <li><Link href="/about" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>About</Link></li>
+            <li><Link href="/testimonials" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Testimonials</Link></li>
+            <li><Link href="/academic-profile" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Academic Profile</Link></li>
+            <li><Link href="/privacy" className="hover:text-secondary transition-all duration-300 flex items-center text-slate-300 hover:translate-x-1"><span className="mr-2 text-secondary">→</span>Privacy Policy</Link></li>
           </ul>
         </div>
       </div>
