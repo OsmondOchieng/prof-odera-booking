@@ -34,8 +34,28 @@ A complete web platform for booking counseling sessions, therapy appointments, a
 - **Email**: Nodemailer
 
 ### Deployment
-- **Frontend**: Vercel or Netlify
-- **Backend**: Heroku, Railway, or self-hosted VPS
+- **Frontend**: Vercel, Netlify, GitHub Pages, or Railway
+- **Backend**: Railway, Heroku, or self-hosted VPS
+
+#### Railway Deployment
+Railway is the recommended cheapest and most convenient option for this repo.
+
+1. Create a Railway account and log in at https://railway.com/dashboard
+2. Create a new Railway project and connect your GitHub repo `OsmondOchieng/prof-odera-booking`
+3. Add a PostgreSQL plugin to the project
+4. Create a service for the backend with root directory `backend`
+5. Set the start command to `npm start` and port to `5000`
+6. Add these environment variables in Railway:
+   - `DB_USER`
+   - `DB_PASSWORD`
+   - `DB_HOST`
+   - `DB_PORT`
+   - `DB_NAME`
+   - `JWT_SECRET`
+   - `FRONTEND_URL=https://osmondochieng.github.io`
+7. Deploy the backend
+
+> If your frontend stays on GitHub Pages, rebuild it with `NEXT_PUBLIC_API_URL=https://<railway-service>.railway.app/api` and redeploy the frontend static site.
 
 ## Project Structure
 
