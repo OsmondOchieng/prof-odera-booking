@@ -3,75 +3,68 @@ const pool = require('../config/database');
 // Seed initial services for Prof. Odera
 const seedServices = async () => {
   const services = [
+    // Counseling & Psychological Support
     {
-      name: 'Individual Counseling Session',
-      description: 'One-on-one counseling focused on personal challenges and mental health',
-      duration_minutes: 60,
-      price_kes: 2000,
-      category: 'Counseling'
-    },
-    {
-      name: 'Career Guidance Consultation',
-      description: 'Career path planning, subject choice guidance, and professional development',
-      duration_minutes: 45,
-      price_kes: 1500,
-      category: 'Career'
-    },
-    {
-      name: 'Educational Psychology Assessment',
-      description: 'Assessment of learning challenges and educational support strategies',
-      duration_minutes: 90,
-      price_kes: 3000,
-      category: 'Education'
-    },
-    {
-      name: 'Trauma & PTSD Therapy',
-      description: 'Specialized counseling for trauma, PTSD, and stress management',
+      name: 'Individual Therapy',
+      description: 'Professional guidance for managing personal life challenges, self-esteem, grief, and emotional well-being.',
       duration_minutes: 60,
       price_kes: 2500,
-      category: 'Therapy'
+      category: 'Counseling & Psychological Support'
     },
     {
-      name: 'Family/Relationship Counseling',
-      description: 'Family dynamics, relationship issues, and interpersonal skills',
+      name: 'Relationship & Family Counseling',
+      description: 'Helping couples and families navigate communication issues, conflict resolution, and relational dynamics.',
       duration_minutes: 75,
       price_kes: 2200,
-      category: 'Family'
+      category: 'Counseling & Psychological Support'
     },
+
+    // Trauma Therapy
     {
-      name: 'Academic Performance Coaching',
-      description: 'Study strategies, academic motivation, and performance improvement',
-      duration_minutes: 45,
-      price_kes: 1200,
-      category: 'Academic'
-    },
-    {
-      name: 'Personality Development & Self-Esteem',
-      description: 'Personal growth, self-concept improvement, and confidence building',
+      name: 'Trauma Recovery',
+      description: 'Specialized therapeutic interventions for individuals healing from past trauma, PTSD, or sudden crisis situations.',
       duration_minutes: 60,
-      price_kes: 1800,
-      category: 'Personal Development'
+      price_kes: 3000,
+      category: 'Trauma Therapy'
     },
     {
-      name: 'Group Workshop - Stress Management',
-      description: 'Interactive workshop on stress management techniques and resilience',
-      duration_minutes: 120,
-      price_kes: 500,
-      category: 'Workshop'
+      name: 'Stress & Anxiety Management',
+      description: 'Evidence-based techniques to help clients cope with chronic stress, panic, and anxiety disorders.',
+      duration_minutes: 45,
+      price_kes: 2000,
+      category: 'Trauma Therapy'
+    },
+
+    // Career Guidance & Development
+    {
+      name: 'Career Assessment & Counseling',
+      description: 'Helping students, job seekers, and professionals align their personalities, skills, and interests with the right career path.',
+      duration_minutes: 60,
+      price_kes: 2200,
+      category: 'Career Guidance & Development'
     },
     {
-      name: 'Motivational Speaking/Training',
-      description: 'Motivational talks for schools, universities, and organizations',
-      duration_minutes: 120,
-      price_kes: 5000,
-      category: 'Speaking'
+      name: 'Professional Clarity & Transition Coaching',
+      description: 'Assisting individuals looking to switch careers, navigate workplace challenges, or advance professionally.',
+      duration_minutes: 60,
+      price_kes: 2500,
+      category: 'Career Guidance & Development'
+    },
+
+    // Educational Psychology
+    {
+      name: 'Academic Assessments',
+      description: 'Identifying learning styles, academic difficulties, or giftedness in students to help them optimize their learning.',
+      duration_minutes: 90,
+      price_kes: 3500,
+      category: 'Educational Psychology'
     },
     {
-      name: 'Consultation for Educational Institutions',
-      description: 'Educational psychology consultation for schools and universities',
-      duration_minutes: 120,
-      price_kes: 10000,
-      category: 'Institutional'
+      name: 'Student Counseling & Behavioral Support',
+      description: 'Supporting children, adolescents, and university students with academic stress, exam anxiety, and behavioral adjustments.',
+      duration_minutes: 45,
+      price_kes: 1500,
+      category: 'Educational Psychology'
     }
   ];
 

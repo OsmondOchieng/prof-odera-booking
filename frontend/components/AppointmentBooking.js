@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { appointmentsAPI, servicesAPI } from '../lib/api';
+import { appointmentsAPI, servicesAPI, paymentsAPI } from '../lib/api';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -12,6 +12,8 @@ const AppointmentBooking = ({ token, onSuccess }) => {
   const [sessionType, setSessionType] = useState('online');
   const [location, setLocation] = useState('');
   const [notes, setNotes] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('none');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -25,6 +27,14 @@ const AppointmentBooking = ({ token, onSuccess }) => {
       }
     };
     fetchServices();
+    // prefill phone number if available in localStorage user
+    try {
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        const u = JSON.parse(userStr);
+        if (u.phone) setPhoneNumber(u.phone);
+      }
+    } catch (e) {}
   }, []);
 
   useEffect(() => {
@@ -52,7 +62,7 @@ const AppointmentBooking = ({ token, onSuccess }) => {
     setLoading(true);
     try {
       const dateStr = selectedDate.toISOString().split('T')[0];
-      await appointmentsAPI.book({
+      const res = await appointmentsAPI.book({
         service_id: selectedService.id,
         appointment_date: dateStr,
         appointment_time: selectedTime,
@@ -61,7 +71,32 @@ const AppointmentBooking = ({ token, onSuccess }) => {
         notes
       }, token);
 
-      onSuccess('Appointment booked successfully!');
+      const appointment = res.data;
+
+      // If user selected M-Pesa, initiate STK push
+      if (paymentMethod === 'mpesa') {
+        if (!phoneNumber) {
+          setError('Please provide phone number for M-Pesa payment');
+          setLoading(false);
+          return;
+        }
+
+        try {
+          const mpesaRes = await paymentsAPI.initiateMPesa({
+            appointment_id: appointment.id,
+            phone_number: phoneNumber,
+            amount: selectedService.price_kes
+          }, token);
+
+          onSuccess('Appointment booked and M-Pesa payment initiated. Check your phone for the STK push.');
+        } catch (err) {
+          setError(err.response?.data?.error || 'M-Pesa initiation failed');
+          // still show appointment booked message
+          onSuccess('Appointment booked successfully!');
+        }
+      } else {
+        onSuccess('Appointment booked successfully!');
+      }
       setSelectedService(null);
       setSelectedDate(new Date());
       setSelectedTime(null);
@@ -183,6 +218,33 @@ const AppointmentBooking = ({ token, onSuccess }) => {
             rows={4}
           />
         </div>
+
+        {/* Payment Method */}
+        <div>
+          <label className="block text-sm font-medium mb-2">Payment Method</label>
+          <select
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            className="input"
+          >
+            <option value="none">Pay later / Invoice</option>
+            <option value="mpesa">M-Pesa (STK Push)</option>
+          </select>
+        </div>
+
+        {paymentMethod === 'mpesa' && (
+          <div>
+            <label className="block text-sm font-medium mb-2">Phone Number (M-Pesa)</label>
+            <input
+              type="tel"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className="input"
+              placeholder="e.g. 254712345678"
+              required
+            />
+          </div>
+        )}
 
         <button
           type="submit"
