@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined'
+  ? `${window.location.origin}/api`
+  : 'http://localhost:5000/api');
 
 // Auth API calls
 export const authAPI = {
