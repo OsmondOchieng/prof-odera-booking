@@ -97,28 +97,34 @@ router.post('/', authMiddleware, async (req, res) => {
     const user = userResult.rows[0];
 
     // Send confirmation email
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: user.email,
-      subject: `Appointment Confirmation - ${service.name}`,
-      html: `
-        <h2>Appointment Confirmation</h2>
-        <p>Dear ${user.first_name},</p>
-        <p>Your appointment has been successfully booked!</p>
-        <h3>Appointment Details:</h3>
-        <ul>
-          <li><strong>Service:</strong> ${service.name}</li>
-          <li><strong>Date:</strong> ${appointment_date}</li>
-          <li><strong>Time:</strong> ${appointment_time}</li>
-          <li><strong>Duration:</strong> ${service.duration_minutes} minutes</li>
-          <li><strong>Location:</strong> ${location || 'Online'}</li>
-        </ul>
-        <p>Please make payment to confirm your appointment.</p>
-        <p>Best regards,<br>Prof. Peter Odera</p>
-      `
-    };
+    const shouldSendEmail = process.env.EMAIL_USER && process.env.EMAIL_PASSWORD && process.env.EMAIL_USER !== 'your_email@gmail.com' && process.env.EMAIL_PASSWORD !== 'your_app_password';
 
-    await transporter.sendMail(mailOptions);
+    if (shouldSendEmail) {
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: user.email,
+        subject: `Appointment Confirmation - ${service.name}`,
+        html: `
+          <h2>Appointment Confirmation</h2>
+          <p>Dear ${user.first_name},</p>
+          <p>Your appointment has been successfully booked!</p>
+          <h3>Appointment Details:</h3>
+          <ul>
+            <li><strong>Service:</strong> ${service.name}</li>
+            <li><strong>Date:</strong> ${appointment_date}</li>
+            <li><strong>Time:</strong> ${appointment_time}</li>
+            <li><strong>Duration:</strong> ${service.duration_minutes} minutes</li>
+            <li><strong>Location:</strong> ${location || 'Online'}</li>
+          </ul>
+          <p>Please make payment to confirm your appointment.</p>
+          <p>Best regards,<br>Prof. Peter Odera</p>
+        `
+      };
+
+      await transporter.sendMail(mailOptions);
+    } else {
+      console.warn('Skipping appointment confirmation email because EMAIL_USER/EMAIL_PASSWORD is not configured or still using placeholder values.');
+    }
 
     res.json(appointment);
   } catch (err) {

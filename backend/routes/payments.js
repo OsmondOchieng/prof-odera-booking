@@ -65,6 +65,16 @@ router.post('/mpesa', authMiddleware, async (req, res) => {
   try {
     const { appointment_id, phone_number, amount } = req.body;
 
+    const missingMpesaConfig = !process.env.MPESA_CONSUMER_KEY || !process.env.MPESA_CONSUMER_SECRET || !process.env.MPESA_BUSINESS_SHORT_CODE || !process.env.MPESA_PASSKEY || !process.env.MPESA_CALLBACK_URL ||
+      process.env.MPESA_CONSUMER_KEY === 'your_mpesa_consumer_key' || process.env.MPESA_CONSUMER_SECRET === 'your_mpesa_consumer_secret' ||
+      process.env.MPESA_BUSINESS_SHORT_CODE === 'your_business_short_code' || process.env.MPESA_PASSKEY === 'your_mpesa_passkey';
+
+    if (missingMpesaConfig) {
+      return res.status(400).json({
+        error: 'M-Pesa sandbox credentials are not configured. Set MPESA_CONSUMER_KEY, MPESA_CONSUMER_SECRET, MPESA_BUSINESS_SHORT_CODE, MPESA_PASSKEY, and MPESA_CALLBACK_URL in .env.'
+      });
+    }
+
     // Get M-Pesa token
     const auth = Buffer.from(`${process.env.MPESA_CONSUMER_KEY}:${process.env.MPESA_CONSUMER_SECRET}`).toString('base64');
 
